@@ -13,6 +13,8 @@ on:
 jobs:
   deploy-test-containers:
     runs-on: ubuntu-latest
+    permissions:
+      packages: install
     name: Build Container
     steps:
       - name: Checkout

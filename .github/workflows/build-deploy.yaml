@@ -28,8 +28,8 @@ jobs:
           docker run -v $PWD:/data quay.io/vanessa/expfactory-builder build /data/${dirname}
           printf "Files generated are:\n"
           ls
-          docker build -t ghcr.io/${owner}/${dirname} .
-          docker tag ghcr.io/${owner}/${dirname}:latest ghcr.io/${owner}/${dirname}:${GITHUB_SHA::8} 
+          docker build -t ghcr.io/jeannie/${dirname} .
+          docker tag ghcr.io/jeannie/${dirname}:latest ghcr.io/jeannie/${dirname}:${GITHUB_SHA::8} 
           docker images | grep ghcr
 
       - name: Log in to GitHub Container Registry
@@ -47,5 +47,5 @@ jobs:
           owner: ${{ github.repository_owner }}
         run: |
             docker images
-            docker push ghcr.io/${owner}/${dirname}:latest
-            docker push ghcr.io/${owner}/${dirname}:${GITHUB_SHA::8}
+            docker push ghcr.io/jeannie/${dirname}:latest
+            docker push ghcr.io/jeannie/${dirname}:${GITHUB_SHA::8}
